@@ -57,7 +57,6 @@ public class ArrayStack2Lab<T> implements StackInterface<T>
         for (int i = topIndex; i >= 0; i--) {
             System.out.println(stack[i]);
         }
-
     }
 
     // Problem 2
