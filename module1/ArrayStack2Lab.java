@@ -10,7 +10,7 @@ public class ArrayStack2Lab<T> implements StackInterface<T>
 		// Add you lab tests here
         
         // TEST for display method
-        System.out.println("Running tests for the 'display' method:");
+        System.out.println("Running tests for the 'display' method:\n");
 
         // Test Case 1
         ArrayStack2Lab<String> test1stack = new ArrayStack2Lab<String>();
@@ -27,7 +27,7 @@ public class ArrayStack2Lab<T> implements StackInterface<T>
         test2stack.display();
 
         // TEST for remove method
-        System.out.println("Running tests for the 'remove' method:");
+        System.out.println("\nRunning tests for the 'remove' method:\n");
 
         // Test Case 3
         ArrayStack2Lab<String> test3stack = new ArrayStack2Lab<String>();
