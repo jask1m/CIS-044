@@ -1,0 +1,52 @@
+Problem 1
+a:After arriving at a party, you shake hands with each person there. n is the number of persons
+in the party.
+O(n) because you need to shake the hands with each person once. Since the number of persons is n, the time is directly proportional to n.
+	
+b:Each person in a room shakes hands with everyone else in the room. n is the number of persons in the room 	
+O(n^2) because n*(n-1) = n^2 (shake hands with every other person)
+
+c:You climb a flight of stairs. n is the number of stairs 
+O(n) because you are climb each stair. it's directly proportional to the n.
+	
+d:After entering an elevator, you press a button to choose a floor. n is the number of floors
+O(1) because regardlness of the number of floor, you press a button to choose a floor. The ride the elevator is constant
+ 	
+e:You ride the elevator from the ground floor up to the nth floor
+O(n) because the elevator travels directly to the nth floor before stopping.
+	
+f:You read a book twice. n is the number of pages in the book
+O(n) because O(2n) by reading the book twice but it simplifies to O(n).
+	
+g:Display all the integers in an array of integers.
+O(n) because displaying each integers in an array is directly proportinal to n (number of integers) in the array.
+	
+h:Display all the integers in a chain of linked nodes
+O(n)because you need to traverse the entire chain so you will display each integer once. 
+	
+i:Display the nth integer in an array of integers.
+O(1) because you can directly access it and it takes constant time, regardless of the size of the array.
+	
+j:Compute the sum of the first n even integers in an array of integers
+O(n) because to compute the sum you need to iterate through the first even itegers in the array of integer. Formula n*(n+1)
+
+Problem 2
+
+n	<	n^2logn		<	n2/ log n   <	n!	<	(1.5)^n  	<	3^n
+
+
+Problem 3
+
+What is the worst case runtime complexity of the following code in terms of n
+//outer loops runs from 1 to n. (O(n))
+for (int pass = 1; pass <= n; pass++) {
+	// Middle loop runs from 0 to n-1. It runs n times for each of the n iterations of the outer loop, n*n = n^2 (O(n^2))
+	for (int index = 0; index < n; index++) {
+		//inner loop runs a constant number of times (9times) for each iterations of the middle loop. (O(1))
+		for (int count = 1; count < 10; count++) {
+		// constant time operation
+		} // end for
+	} // end for
+} // end
+
+The worst case runtime complexity of the following code in term of n is O(n^2).
