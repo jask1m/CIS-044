@@ -57,7 +57,7 @@ public class ArrayQueueLab<T> implements QueueInterface<T> {
 			output2 = "false";
 		}
 		System.out.println("The expected output is: true");
-		System.out.println("The actual output is: " + output2);
+		System.out.println("The actual output is: " + output2 + "\n");
 	}
 
 	// Problem 1, part 1
