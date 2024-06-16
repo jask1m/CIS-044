@@ -1,7 +1,6 @@
 public class ArrayQueueLab<T> implements QueueInterface<T> {
 
 	public static void main(String[] args) {
-		// Add you lab tests here
 		System.out.println("Running tests for problem 4:");
 		ArrayQueueLab<String> queue = new ArrayQueueLab<>();
 		queue.enqueue("dog");
@@ -158,4 +157,4 @@ public class ArrayQueueLab<T> implements QueueInterface<T> {
 		backIndex = queue.length - 1;
 	}
 
-} // end ArrayQueueLab
+} 
