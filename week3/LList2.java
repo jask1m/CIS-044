@@ -6,6 +6,53 @@
 */
 public class LList2<T> implements ListInterface<T>
 {
+	public static void main(String[] args) {
+
+	}
+
+	public int getLastIndex(T item) {
+		Node current = firstNode;
+		int last = -1;
+		for (int i = 1; i <= numberOfEntries; i++) {
+			if (current.getData().equals(item)) {
+				last = i;
+			}
+		}
+		return last;
+	}
+
+	public boolean equals(Object other) {
+		// check if the two objects hold same reference
+		if (this == other) {
+			return true;
+		}
+
+		// check if other's type is of AList
+		if (other == null || getClass() != other.getClass()) {
+			return false;
+		}
+
+		// cast other to type LList2
+		LList2<?> otherList = (LList2<?>) other;
+
+		// check for same number of entries
+		if (numberOfEntries != otherList.numberOfEntries) {
+			return false;
+		}
+
+		// iterate and check for differences
+		Node current = firstNode;
+		Node otherCurrent = otherList.firstNode;
+		while (current != null) {
+			if (!current.getData().equals(otherCurrent.getData())) {
+				return false;
+			}
+			current = current.getNextNode();
+			otherCurrent = otherCurrent.getNextNode();
+		}
+		return true;
+	}
+
 	private Node firstNode; // head reference to first node
 	private Node lastNode;  // tail reference to last node
 	private int  numberOfEntries;
