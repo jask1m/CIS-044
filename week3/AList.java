@@ -8,20 +8,71 @@ public class AList<T> implements ListInterface<T>
 {
 
 	public static void main(String[] args) {
+		System.out.println("Running tests for getLastIndex:");
 
+    AList<String> list1 = new AList<>();
+    list1.add("dog");
+    list1.add("cat");
+    list1.add("bird");
+    list1.add("cat");
+    list1.add("dog");
+
+    // Test getLastIndex
+    System.out.println("Expected output for 'cat': 4");
+    System.out.println("Actual output for 'cat': " + list1.getLastIndex("cat"));
+    System.out.println("Expected output for 'dog': 5");
+    System.out.println("Actual output for 'dog': " + list1.getLastIndex("dog"));
+    System.out.println("Expected output for 'bird': 3");
+    System.out.println("Actual output for 'bird': " + list1.getLastIndex("bird"));
+    System.out.println("Expected output for 'fish': -1");
+    System.out.println("Actual output for 'fish': " + list1.getLastIndex("fish"));
+
+
+		System.out.println("\nRunning tests for equals:");
+
+		AList<String> list2 = new AList<>();
+    list2.add("dog");
+    list2.add("cat");
+    list2.add("bird");
+    list2.add("cat");
+    list2.add("dog");
+
+    AList<String> list3 = new AList<>();
+    list3.add("dog");
+    list3.add("cat");
+    list3.add("bird");
+    list3.add("cat");
+    list3.add("dog");
+
+    AList<String> list4 = new AList<>();
+    list4.add("dog");
+    list4.add("cat");
+    list4.add("bird");
+    list4.add("cat");
+
+    // Test equals
+    System.out.println("Expected output for list1.equals(list2): true");
+    System.out.println("Actual output for list1.equals(list2): " + list1.equals(list2));
+    System.out.println("Expected output for list1.equals(list3): true");
+    System.out.println("Actual output for list1.equals(list3): " + list1.equals(list3));
+    System.out.println("Expected output for list1.equals(list4): false");
+    System.out.println("Actual output for list1.equals(list4): " + list1.equals(list4));
+    System.out.println("Expected output for list1.equals(null): false");
+    System.out.println("Actual output for list1.equals(null): " + list1.equals(null));
+    System.out.println("Expected output for list1.equals(\"dog\"): false");
+    System.out.println("Actual output for list1.equals(\"dog\"): " + list1.equals("dog"));
 	}
 
 	public int getLastIndex(T item) {
 		// loop through each element starting from the end
 		for (int i = numberOfEntries - 1; i >= 0; i--) {
 			// check if each index is equal to the parameter item
-			if (getEntry(i).equals(item))
+			if (getEntry(i + 1).equals(item))
 				// return the list index if equal
 				return i + 1;
 		}
-
 		// return -1 if item not in list
-		return -1;
+		return - 1;
 	}
 
 	public boolean equals(Object other) {
@@ -44,7 +95,7 @@ public class AList<T> implements ListInterface<T>
 
 		// iterate and check for differences
 		for (int i = 0; i < numberOfEntries; i++) {
-			if (!list[i].equals(otherList.getEntry(i)))
+			if (!list[i].equals(otherList.getEntry(i + 1)))
 				return false;
 		}
 
