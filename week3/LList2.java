@@ -7,16 +7,68 @@
 public class LList2<T> implements ListInterface<T>
 {
 	public static void main(String[] args) {
+    // Test getLastIndex method
+    System.out.println("Testing getLastIndex method:");
+    LList2<String> list1 = new LList2<>();
+    list1.add("apple");
+    list1.add("banana");
+    list1.add("cherry");
+    list1.add("date");
+    list1.add("banana");
+    list1.add("elderberry");
 
-	}
+    System.out.println("Last index of 'banana': " + list1.getLastIndex("banana") + " (Expected: 5)");
+    System.out.println("Last index of 'apple': " + list1.getLastIndex("apple") + " (Expected: 1)");
+    System.out.println("Last index of 'elderberry': " + list1.getLastIndex("elderberry") + " (Expected: 6)");
+    System.out.println("Last index of 'fig': " + list1.getLastIndex("fig") + " (Expected: -1)");
+
+    LList2<String> emptyList = new LList2<>();
+    System.out.println("Last index of 'apple' in empty list: " + emptyList.getLastIndex("apple") + " (Expected: -1)");
+
+    LList2<String> listWithNull = new LList2<>();
+    listWithNull.add("apple");
+    listWithNull.add(null);
+    listWithNull.add("banana");
+    listWithNull.add(null);
+    System.out.println("Last index of null: " + listWithNull.getLastIndex(null) + " (Expected: 4)");
+
+    // Test equals method
+    System.out.println("\nTesting equals method:");
+    LList2<String> list2 = new LList2<>();
+    list2.add("apple");
+    list2.add("banana");
+    list2.add("cherry");
+    list2.add("date");
+    list2.add("banana");
+    list2.add("elderberry");
+
+    LList2<String> list3 = new LList2<>();
+    list3.add("apple");
+    list3.add("banana");
+    list3.add("cherry");
+
+    LList2<Integer> list4 = new LList2<>();
+    list4.add(1);
+    list4.add(2);
+    list4.add(3);
+
+    System.out.println("list1 equals list2: " + list1.equals(list2) + " (Expected: true)");
+    System.out.println("list1 equals list3: " + list1.equals(list3) + " (Expected: false)");
+    System.out.println("list1 equals emptyList: " + list1.equals(emptyList) + " (Expected: false)");
+    System.out.println("emptyList equals emptyList: " + emptyList.equals(emptyList) + " (Expected: true)");
+    System.out.println("list1 equals null: " + list1.equals(null) + " (Expected: false)");
+    System.out.println("list1 equals 'apple': " + list1.equals("apple") + " (Expected: false)");
+    System.out.println("list1 equals list4: " + list1.equals(list4) + " (Expected: false)");
+}
 
 	public int getLastIndex(T item) {
 		Node current = firstNode;
 		int last = -1;
 		for (int i = 1; i <= numberOfEntries; i++) {
-			if (current.getData().equals(item)) {
+			if ((item == null && current.getData() == null) || (item != null && current.getData().equals(item))) {
 				last = i;
 			}
+			current = current.getNextNode();
 		}
 		return last;
 	}
@@ -34,21 +86,19 @@ public class LList2<T> implements ListInterface<T>
 
 		// cast other to type LList2
 		LList2<?> otherList = (LList2<?>) other;
-
 		// check for same number of entries
 		if (numberOfEntries != otherList.numberOfEntries) {
 			return false;
 		}
 
 		// iterate and check for differences
-		Node current = firstNode;
-		Node otherCurrent = otherList.firstNode;
-		while (current != null) {
-			if (!current.getData().equals(otherCurrent.getData())) {
+		for (int i = 1; i <= numberOfEntries; i++) {
+			T element = this.getEntry(i);
+			Object otherElement = otherList.getEntry(i);
+
+			if (!element.equals(otherElement)) {
 				return false;
 			}
-			current = current.getNextNode();
-			otherCurrent = otherCurrent.getNextNode();
 		}
 		return true;
 	}
