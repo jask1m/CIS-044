@@ -29,14 +29,14 @@ public class Lab5
 		System.out.println("Running tests for modifiedSelectionSort:");
 
 		Integer[] arr1 = { 3, 1, 4, 1, 5, 9, 2, 6, 5, 3 };
-    modifiedSelectionSort(arr1, 0);
+    modifiedSelectionSort(arr1, 10);
     System.out.println("Expected output for arr1: [1, 1, 2, 3, 3, 4, 5, 5, 6, 9]");
     System.out.println("Actual output for arr1: " + Arrays.toString(arr1));
 
     // Test Case 2: String array
-    String[] arr2 = { "banana", "apple", "orange", "pear", "grape" };
-    modifiedSelectionSort(arr2, 0);
-    System.out.println("Expected output for arr2: [apple, banana, grape, orange, pear]");
+    Double[] arr2 = { 0.5, 5.0, -2.2, 4.2, 1.6, -12.1 };
+    modifiedSelectionSort(arr2, 6);
+    System.out.println("Expected output for arr2: [-12.1, -2.2, 0.5, 1.6, 4.2, 5.0]");
     System.out.println("Actual output for arr2: " + Arrays.toString(arr2));
 }
 
@@ -61,9 +61,9 @@ public class Lab5
 	
 	// Problem 2
     public static <T extends Comparable<? super T>> void modifiedSelectionSort(T[] a, int n) {
-			int last_index = a.length - 1;
+			int last_index = n - 1;
 
-			for (int i = 0; i < a.length / 2; i++) {
+			for (int i = 0; i < n / 2; i++) {
 				int smallest = i;
 				int largest = i;
 
@@ -76,21 +76,17 @@ public class Lab5
 					}
 				}
 
-				if (i != smallest) {
-					T tmp_sml = a[i];
-					a[i] = a[smallest];
-					a[smallest] = tmp_sml;
-				}
+				T tmp_sml = a[i];
+				a[i] = a[smallest];
+				a[smallest] = tmp_sml;
 
-				if (i == smallest) {
+				if (i == largest) {
 					largest = smallest;
 				}
-				
-				if (last_index != largest) {
-					T tmp = a[last_index];
-					a[last_index] = a[largest];
-					a[largest] = tmp;
-				}
+
+				T tmp = a[last_index];
+				a[last_index] = a[largest];
+				a[largest] = tmp;
 
 				last_index--;
 			}
@@ -98,8 +94,7 @@ public class Lab5
     // For problem 2, how many comparisons are necessary to sort n values?  Write your answer below
 		// In this sorting method, there are two for loops. The outer for loop iterates n/2 times, considering that n is the length.
 		// The inner loop is where the comparisons are being made.
-		// there are n-i, and n-i comparisons to find the smallest and largest element respectfully.
-		// the total comparisons in the inner loop is 2(n-i)
+		// there are 2(n-2i) comparisons to find the smallest and largest element.
 		// the inner loop comparisons can be considered as O(n)
 		// since the outer loop iterates n/2 times, the total comparisons can be O(n) * O(n/2)
 		// this gives a total of O(n^2 / 2) comparisons, or more simply, O(n^2)
