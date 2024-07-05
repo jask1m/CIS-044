@@ -83,7 +83,7 @@ public class BinaryTreeLab<T> {
         // count occurrences
         if (rootNode.getData().equals(anObject)) {
             count = 1;
-        }
+        }  
     
         return count + count1(rootNode.getLeftChild(), anObject) + count1(rootNode.getRightChild(), anObject);
     }
